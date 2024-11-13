@@ -1,0 +1,14 @@
+{
+  "name": "cirilgroup",
+  "version": "1.0.0",
+  "description": "free test app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
