@@ -4,6 +4,17 @@ const getRandomState = () => {
   return states[Math.floor(Math.random() * states.length)];
 };
 
+const color = (caseState) => {
+  switch (caseState) {
+    case state.fire:
+      return "red";
+    case state.ash:
+      return "gray";
+    default:
+      return "green";
+  }
+};
+
 class FieldCase {
   x = 0;
   y = 0;
@@ -22,10 +33,6 @@ class FieldCase {
     }
     this.state = newState;
     return this;
-  }
-
-  display() {
-    console.log(`x: ${this.x}, y: ${this.y}, state: ${this.state}`);
   }
 }
 
@@ -78,6 +85,22 @@ class Forest {
       .forEach((fieldCase) => {
         fieldCase.updateCaseState(state.fire);
       });
+  }
+
+  printForest() {
+    let table =
+      "<div style='display:flex;margin:2em; float:left'><table border=1>\n";
+
+    this.forest.forEach((row) => {
+      table += "<tr>\n";
+      row.forEach((fieldCase) => {
+        table += `<td border='1' 
+        style="background-color:${color(fieldCase.state)}">(${fieldCase.x},${fieldCase.y})</td>\n`;
+      });
+      table += "</tr>\n";
+    });
+    table += "</table></div>\n";
+    return table;
   }
 }
 
